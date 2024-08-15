@@ -1,0 +1,298 @@
+#############################################################
+###########OMT LIFESTYLE AND ENVIRONEMENT FACTORS ANALYSIS ####
+#################################################################
+
+
+
+qiime feature-table summarize \
+--i-table table.qza \
+--m-sample-metadata-file metadata.tsv \
+--o-visualization table.qzv
+
+qiime taxa barplot \
+--i-table table.qza \
+--i-taxonomy taxonomy.qza \
+--m-metadata-file metadata.tsv \
+--o-visualization taxa-bar-plots.qzv
+
+qiime diversity alpha-rarefaction \
+  --i-table table.qza \
+  --p-max-depth 5000 \
+  --m-metadata-file metadata.tsv \
+  --o-visualization alpha_rarefaction.qzv
+  
+qiime diversity core-metrics-phylogenetic \
+  --i-phylogeny rooted-tree.qza \
+  --i-table table.qza \
+  --p-sampling-depth 2000 \
+  --m-metadata-file metadata.tsv \
+  --output-dir core-metrics
+
+qiime diversity core-metrics-phylogenetic \
+  --i-phylogeny rooted-tree.qza \
+  --i-table table.qza \
+  --p-sampling-depth 1000 \
+  --m-metadata-file metadata.tsv \
+  --output-dir core-metrics-1000
+  
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity core-metrics/observed_features_vector.qza \
+  --m-metadata-file metadata.tsv \
+  --o-visualization core-metrics/vis-observed_features_vector.qzv
+  
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity core-metrics-1000/observed_features_vector.qza \
+  --m-metadata-file metadata.tsv \
+  --o-visualization core-metrics-1000/vis-observed_features_vector.qzv
+  
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity core-metrics/shannon_vector.qza \
+  --m-metadata-file metadata.tsv \
+  --o-visualization core-metrics/vis-shannon_vector.qzv
+##############################
+mkdir core-metrics/BetaSig-ADONIS
+mkdir core-metrics/BetaSig-PNOVA
+mkdir core-metrics-1000/BetaSig-ADONIS
+mkdir core-metrics-1000/BetaSig-PNOVA
+
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column country_born.factor \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-BC-countryborn.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column mental_health_status \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-BC-mental_health_status.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column country_born.factor \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-BC-countryborn.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column study_status \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-BC-study_status.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column employment_status \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-BC-employment_status.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column education_status \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-BC-education_status.qzv \
+  --p-pairwise
+  
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column age_group \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-BC-age_group.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column caries_experience \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-BC-caries_experience.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column ph_status \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-ph_status.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column physical_activity_status \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-physical_activity.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column generalhealth_status \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-generalhealth.qzv \
+  --p-pairwise
+  
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column Protein_status \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-protein_status.qzv \
+  --p-pairwise
+  
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column fiber_status \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-fiber_status.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column Fat_status \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-fat_status.qzv \
+  --p-pairwise
+  
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column Sugars_status \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-sugar_status.qzv \
+  --p-pairwise
+  
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column smoking_status \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-smoking_status.qzv \
+  --p-pairwise
+  
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column toothbrsh_freq_status \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-toothbrushing.qzv \
+  --p-pairwise
+  
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column flossing_status \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-flossing.qzv \
+  --p-pairwise
+  
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column last_visit_dent_status \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-last_visit_dent_status.qzv \
+  --p-pairwise
+  
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column fluoride_prof_status \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-fluoride_prof_status.qzv \
+  --p-pairwise
+  
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column saliva_flow_status \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-saliva_flow_status.qzv \
+  --p-pairwise
+  
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column postglucose_status \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-postglucose_status.qzv \
+  --p-pairwise
+  
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column alcohol_status \
+  --o-visualization core-metrics/BetaSig-PNOVA/vis-alcohol_status.qzv \
+  --p-pairwise
+
+
+qiime emperor plot \
+  --i-pcoa core-metrics-1000/bray_curtis_pcoa_results.qza \
+  --m-metadata-file metadata.tsv \
+  --p-custom-axes age \
+  --o-visualization core-metrics-1000/beta-diversity-agegroupboxplots.qzv
+
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-1000/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.tsv \
+  --m-metadata-column age_group \
+  --o-visualization core-metrics-1000/BetaSig-PNOVA/vis-age-group.qzv \
+  --p-pairwise
+  
+  
+  
+#########ADONIS########
+qiime diversity adonis \
+--i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+--m-metadata-file metadata.tsv \
+--p-formula "country_born.factor*study_status*employment_status*physical_activity_status*carbohydrate_status*Sugars_status*fiber_status*fluoride_prof_status*saliva_flow_status*postglucose_status" \
+--o-visualization core-metrics/BetaSig-ADONIS/vis-adonis-try.qzv 
+
+
+qiime diversity adonis \
+--i-distance-matrix core-metrics/bray_curtis_distance_matrix.qza \
+--m-metadata-file metadata.tsv \
+--p-formula "country_born.factor*study_status*employment_status*physical_activity_status*saliva_flow_status" \
+--o-visualization core-metrics/BetaSig-ADONIS/vis-adonis-try1.qzv 
+
+########creating genus table########
+qiime taxa collapse \
+--i-table table.qza \
+--i-taxonomy taxonomy.qza \
+--p-level 6 \
+--o-collapsed-table table_genus.qza
+
+qiime feature-table summarize \
+  --i-table table_genus.qza \
+  --o-visualization table_genus.qzv \
+  --m-sample-metadata-file metadata.tsv
+  
+qiime tools export \
+--input-path table_genus.qza \
+--output-path table
+
+biom convert \
+--input-fp feature-table.biom \
+--output-fp feature-table.tsv \
+--to-tsv
+
+biom convert -i feature-table-genus.tsv -o feature-table-genus.biom \
+--table-type="OTU table" --to-hdf5
+
+qiime tools import \
+  --input-path feature-table-genus.biom \
+  --type 'FeatureTable[Frequency]' \
+  --input-format BIOMV210Format \
+  --output-path feature-table-genus.qza
+
+qiime tools export \
+  --input-path taxonomy.qza \
+  --output-path taxon
+
+biom convert \
+  --input-path taxon/taxono.biom \
+  --output-path output_file.tsv \
+  --to-tsv
+  
+  qiime tools export \
+  --input-path table.qza \
+  --output-path OTU
+  
+  biom convert \
+--input-fp OTU/feature-table.biom \
+--output-fp feature-table.tsv \
+--to-tsv
