@@ -65,4 +65,5 @@ install.packages("microViz", repos = c("https://david-barnett.r-universe.dev",
 
 ## Contact
 
+sonia.nath@adelaide.edu.au
 Sonia Nath, Adelaide Dental School, The University of Adelaide.
