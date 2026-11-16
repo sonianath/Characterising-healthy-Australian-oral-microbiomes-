@@ -1,0 +1,15 @@
+# Raw study data: not for public release
+data-raw/
+
+# QIIME 2 artefacts (add separately if you choose to share them)
+data/qiime2/*.qza
+
+# Generated output
+results/
+output/
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+.DS_Store

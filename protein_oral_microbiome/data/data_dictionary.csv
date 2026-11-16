@@ -1,0 +1,28 @@
+variable,description,units_or_levels
+sample_id,Plaque sample ID (matches the QIIME 2 feature table),
+participant_id,Participant ID,
+age,Age,years
+gender,Gender,Male; Female
+country_of_birth,Country of birth,Australia; Other
+education,Highest completed education,Tertiary; Secondary or less
+employment,Employment status,Employed; Not working
+physical_activity,IPAQ physical activity category,Low (<600); Moderate (600-1500); High (>1500 MET-min/week)
+met_min_week,Total physical activity,MET-min/week
+alcohol,Alcohol consumption,>=1 standard drink/week; Occasional or non-drinker
+smoking,Smoking status ('Rather not say' grouped with non-smokers),Current smoker; Non-smoker
+toothbrushing,Toothbrushing frequency,Once daily; Twice daily or more
+flossing,Flossing frequency,Once daily or more; Occasionally or never
+last_dental_visit,Time since last dental visit,<12 months; >=12 months
+filled_teeth,Number of filled teeth,count
+missing_teeth,Number of missing teeth,count
+saliva_ph_post_glucose,Salivary pH 2 min after glucose challenge,pH
+saliva_ph_fall,Fall in salivary pH from baseline to 2 min after glucose challenge,pH units
+energy_kj,Total energy intake excluding fibre (FFQ),kJ/day
+protein_g,Total protein intake (FFQ),g/day
+fat_g,Total fat intake (FFQ),g/day
+carbohydrate_g,Available carbohydrate intake (FFQ),g/day
+animal_protein_g,Protein from animal-source foods,g/day
+plant_protein_g,Protein from plant-source foods,g/day
+animal_pct_energy,Animal protein density (17 kJ/g),% of energy
+plant_pct_energy,Plant protein density (17 kJ/g),% of energy
+protein_group,Protein source group (top tertile of animal or plant protein density),Reference; High animal; High plant
