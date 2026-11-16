@@ -2,7 +2,7 @@
 
 Analysis code for:
 
-> Nath S, Jamieson L, Zilm P, Weyrich LS. Dietary protein sources modulate healthy Australian adult oral microbiomes. *Frontiers in Cellular and Infection Microbiology* (submitted).
+> Nath S, Jamieson L, Zilm P, Weyrich LS. Dietary protein sources modulate healthy Australian adult oral microbiomes.
 
 Cross-sectional analysis of 88 healthy, caries-free Australian adults linking animal and plant protein intake (food frequency questionnaire) to the supragingival plaque microbiome (16S rRNA gene, V4).
 
